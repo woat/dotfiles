@@ -1,7 +1,8 @@
 set nocompatible
 filetype off
 
-" vim-vue          - v- fix
+" -- local edit log --
+" vim-vue          - v- fix, forced html5's indent file
 " html5            - if statement for vue filetype on template tag
 " vim-closetag     - enabled in *.vue
 
@@ -16,7 +17,9 @@ Bundle 'tpope/vim-commentary'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'ctrlpvim/ctrlp.vim'
+Bundle 'jiangmiao/auto-pairs'
 
+Bundle 'othree/html5.vim'
 Bundle 'othree/yajs.vim'
 Bundle 'posva/vim-vue' 
 
@@ -25,7 +28,6 @@ Bundle 'leshill/vim-json'
 Bundle 'mattn/emmet-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'alvan/vim-closetag'
-Bundle 'othree/html5.vim'
 
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'ap/vim-css-color'
@@ -40,7 +42,6 @@ set lazyredraw
 
 syntax enable
 
-set rnu  
 set number
 set tabstop=4
 set shiftwidth=4
@@ -52,6 +53,7 @@ set smartindent " Intellegently dedent / indent new lines based on rules.
 set laststatus=2
 set list lcs=tab:\|\ 
 set iskeyword+=-
+set backspace=indent,eol,start
 
 set nobackup " We have vcs, we don't need backups.
 set nowritebackup " We have vcs, we don't need backups.
