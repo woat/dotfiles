@@ -1,1 +1,1 @@
-.zshrc
+export PS1="%d %% "
