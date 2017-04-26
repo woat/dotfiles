@@ -1,0 +1,4 @@
+some commands that i may forget in the future
+
+y+ -> copy into system clipboard
+sudo chmod -R -x * && sudo chmod -R +X * -> remove executable bit

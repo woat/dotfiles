@@ -2,7 +2,6 @@ set nocompatible
 filetype off
 
 " -- local edit log --
-" vim-vue          - v- fix, forced html5's indent file
 " html5            - if statement for vue filetype on template tag
 " vim-closetag     - enabled in *.vue
 
@@ -43,15 +42,15 @@ set lazyredraw
 syntax enable
 
 set number
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set list lcs=tab:\|\ 
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set smarttab " let's tab key insert 'tab stops', and bksp deletes tabs.
 set shiftround " tab / shifting moves to closest tabstop.
 set autoindent " Match indents on new lines.
 set smartindent " Intellegently dedent / indent new lines based on rules.
 set laststatus=2
-set list lcs=tab:\|\ 
 set iskeyword+=-
 set backspace=indent,eol,start
 
@@ -83,6 +82,10 @@ map <leader>\ :NERDTreeToggle<CR>
 
 " toggle linenumbers
 map <leader>n :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
+
+" set cc + toggle colorcolumn
+set cc=80
+nnoremap <leader>z :let &cc = &cc == '' ? '80' : ''<CR>
 
 " create new vsplit, and switch to it.
 noremap <leader>v <C-w>v
