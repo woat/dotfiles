@@ -1,4 +1,3 @@
-set nocompatible
 filetype off
 
 " -- local edit log --
@@ -10,31 +9,40 @@ call vundle#begin()
 
 Bundle 'VundleVim/Vundle.vim'
 
+" standard vim
 Bundle 'junegunn/seoul256.vim'
+Bundle 'mikewest/vimroom'
 Bundle 'itchyny/lightline.vim'
-Bundle 'tpope/vim-commentary'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'jiangmiao/auto-pairs'
-
-Bundle 'othree/html5.vim'
-Bundle 'othree/yajs.vim'
-Bundle 'posva/vim-vue' 
-
 Bundle 'tpope/vim-markdown'
-Bundle 'leshill/vim-json'
-Bundle 'mattn/emmet-vim'
+
+" web-dev
+Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
 Bundle 'alvan/vim-closetag'
 
+" html
+Bundle 'othree/html5.vim'
+Bundle 'mattn/emmet-vim'
+
+" css
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'ap/vim-css-color'
+
+" js
+Bundle 'posva/vim-vue'
+Bundle 'othree/yajs.vim'
+Bundle 'othree/es.next.syntax.vim'
+Bundle 'leshill/vim-json'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 autocmd vimenter * NERDTree | wincmd p
+runtime macros/matchit.vim
 
 set ttyfast
 set lazyredraw
@@ -42,7 +50,9 @@ set lazyredraw
 syntax enable
 
 set number
+set showcmd
 set list lcs=tab:\|\ 
+set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -83,13 +93,18 @@ map <leader>\ :NERDTreeToggle<CR>
 " toggle linenumbers
 map <leader>n :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 
+" toggle css colors
+map <leader>x :call css_color#toggle()<CR>
+
+" delete resulting tag side-effect
+imap <leader>z <ESC>ldf>a
+
 " set cc + toggle colorcolumn
 set cc=80
-nnoremap <leader>z :let &cc = &cc == '' ? '80' : ''<CR>
+nnoremap <leader>w :let &cc = &cc == '' ? '80' : ''<CR>
 
 " create new vsplit, and switch to it.
 noremap <leader>v <C-w>v
-noremap <leader>w <C-w>
 
 " bindings for easy split nav
 nnoremap <C-h> <C-w>h
