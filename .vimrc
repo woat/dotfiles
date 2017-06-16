@@ -2,7 +2,7 @@ filetype off
 
 " -- local edit log --
 " html5            - if statement for vue filetype on template tag
-" vim-closetag     - enabled in *.vue
+" vim-closetag     - enabled in *.vue,*.hbs,*.ejs
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -19,6 +19,9 @@ Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'tpope/vim-markdown'
 
+" lint engine
+Bundle 'w0rp/ale'
+
 " web-dev
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
@@ -28,21 +31,27 @@ Bundle 'alvan/vim-closetag'
 Bundle 'othree/html5.vim'
 Bundle 'mattn/emmet-vim'
 
+" express - view engines
+Bundle 'nikvdp/ejs-syntax'
+Bundle 'digitaltoad/vim-pug'
+
 " css
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'ap/vim-css-color'
 
 " js
 Bundle 'posva/vim-vue'
-Bundle 'othree/yajs.vim'
-Bundle 'othree/es.next.syntax.vim'
+Bundle 'pangloss/vim-javascript'
 Bundle 'leshill/vim-json'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 autocmd vimenter * NERDTree | wincmd p
-runtime macros/matchit.vim
+let NERDTreeShowHidden=1
+
+" html indent in js
+let g:jsx_ext_required = 0
 
 set ttyfast
 set lazyredraw
@@ -96,6 +105,12 @@ map <leader>n :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 " toggle css colors
 map <leader>x :call css_color#toggle()<CR>
 
+" spellcheck
+map <leader>t :set spell!<CR>
+
+" toggle ale linter
+map <leader>q :ALEToggle<cr>
+
 " delete resulting tag side-effect
 imap <leader>z <ESC>ldf>a
 
@@ -106,6 +121,8 @@ nnoremap <leader>w :let &cc = &cc == '' ? '80' : ''<CR>
 " create new vsplit, and switch to it.
 noremap <leader>v <C-w>v
 
+" vimroom
+nnoremap <leader>y :VimroomToggle<CR>:NERDTreeToggle<CR>
 " bindings for easy split nav
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -149,6 +166,7 @@ colo seoul256
 " matching paranthesis colors
 hi MatchParen cterm=none ctermbg=243 ctermfg=red
 
+" lightline settings
 let g:lightline = {
       \ 'colorscheme': 'seoul256',
       \ 'active': {
