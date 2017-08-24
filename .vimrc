@@ -11,6 +11,7 @@ Bundle 'VundleVim/Vundle.vim'
 
 " standard vim
 Bundle 'junegunn/seoul256.vim'
+Bundle 'morhetz/gruvbox'
 Bundle 'mikewest/vimroom'
 Bundle 'itchyny/lightline.vim'
 Bundle 'scrooloose/nerdtree'
@@ -18,6 +19,7 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'tpope/vim-markdown'
+Bundle 'Yggdroot/indentLine'
 
 " lint engine
 Bundle 'w0rp/ale'
@@ -40,9 +42,11 @@ Bundle 'hail2u/vim-css3-syntax'
 Bundle 'ap/vim-css-color'
 
 " js
+Bundle 'othree/yajs.vim'
 Bundle 'posva/vim-vue'
-Bundle 'pangloss/vim-javascript'
-Bundle 'leshill/vim-json'
+
+" json
+Bundle 'elzr/vim-json'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -52,6 +56,9 @@ let NERDTreeShowHidden=1
 
 " html indent in js
 let g:jsx_ext_required = 0
+
+" json settings
+let g:vim_json_syntax_conceal = 0
 
 set ttyfast
 set lazyredraw
@@ -123,11 +130,16 @@ noremap <leader>v <C-w>v
 
 " vimroom
 nnoremap <leader>y :VimroomToggle<CR>:NERDTreeToggle<CR>
+
 " bindings for easy split nav
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" natural split openings
+set splitbelow
+set splitright
 
 " regex settings
 nnoremap / /\v
@@ -158,10 +170,11 @@ let g:ctrlp_map = '<c-t>'
 let g:ctrlp_max_height = 30
 
 " colorscheme settings
-set t_Co=256
-set background=dark
-let g:seoul256_background = 234
-colo seoul256
+colorscheme gruvbox
+" set t_Co=256
+" set background=dark
+" let g:seoul256_background = 235
+" colo seoul256
 
 " matching paranthesis colors
 hi MatchParen cterm=none ctermbg=243 ctermfg=red
@@ -295,3 +308,4 @@ endfunction
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
+let g:ale_lint_delay = 100
