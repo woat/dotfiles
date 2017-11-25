@@ -12,7 +12,6 @@ Bundle 'VundleVim/Vundle.vim'
 " standard vim
 Bundle 'junegunn/seoul256.vim'
 Bundle 'morhetz/gruvbox'
-Bundle 'mikewest/vimroom'
 Bundle 'itchyny/lightline.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
@@ -34,7 +33,6 @@ Bundle 'othree/html5.vim'
 Bundle 'mattn/emmet-vim'
 
 " express - view engines
-Bundle 'nikvdp/ejs-syntax'
 Bundle 'digitaltoad/vim-pug'
 
 " css
@@ -42,8 +40,8 @@ Bundle 'hail2u/vim-css3-syntax'
 Bundle 'ap/vim-css-color'
 
 " js
-Bundle 'othree/yajs.vim'
 Bundle 'posva/vim-vue'
+Bundle 'pangloss/vim-javascript'
 
 " json
 Bundle 'elzr/vim-json'
@@ -53,9 +51,6 @@ filetype plugin indent on    " required
 
 autocmd vimenter * NERDTree | wincmd p
 let NERDTreeShowHidden=1
-
-" html indent in js
-let g:jsx_ext_required = 0
 
 " json settings
 let g:vim_json_syntax_conceal = 0
@@ -127,9 +122,6 @@ nnoremap <leader>w :let &cc = &cc == '' ? '80' : ''<CR>
 
 " create new vsplit, and switch to it.
 noremap <leader>v <C-w>v
-
-" vimroom
-nnoremap <leader>y :VimroomToggle<CR>:NERDTreeToggle<CR>
 
 " bindings for easy split nav
 nnoremap <C-h> <C-w>h
