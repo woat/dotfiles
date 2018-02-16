@@ -116,6 +116,8 @@ let mapleader = ","
 
 map <leader>\ :NERDTreeToggle<CR>
 
+map <leader>y :%y+<CR>
+
 " toggle linenumbers
 map <leader>n :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 
@@ -130,7 +132,7 @@ imap <leader>z <ESC>ldf>a
 
 " set cc + toggle colorcolumn
 set cc=80
-nnoremap <leader>w :let &cc = &cc == '' ? '80' : ''<CR>
+nnoremap <leader>w :let &cc = &cc == '' ? '81' : ''<CR>
 
 " create new vsplit, and switch to it.
 noremap <leader>v <C-w>v
@@ -161,3 +163,4 @@ let g:ale_lint_delay = 100
 let g:indentLine_color_term = 239
 let g:indentLine_char = '▏'
 let g:vue_disable_pre_processors=1
+let g:AutoPairsMultilineClose = 0
