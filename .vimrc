@@ -1,166 +1,151 @@
-filetype off
+" Plugin Manager / Required
+	set rtp+=~/.vim/bundle/Vundle.vim
+	filetype off
+	call vundle#begin()          
+		Bundle 'VundleVim/Vundle.vim'
 
-" -- local edit log --
-" html5            - if statement for vue filetype on template tag
-" vim-closetag     - enabled in *.vue,*.hbs,*.ejs
+	" General
+		Bundle 'itchyny/lightline.vim'
+		Bundle 'jiangmiao/auto-pairs'
+		Bundle 'sheerun/vim-polyglot'
+		Bundle 'suan/vim-instant-markdown'
+		Bundle 'tpope/vim-commentary'
+		Bundle 'tpope/vim-surround'
+		Bundle 'tpope/vim-markdown'
+		Bundle 'christoomey/vim-tmux-navigator'
+		Bundle 'w0rp/ale'
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+	" Colorscheme
+		Bundle 'junegunn/seoul256.vim'
 
-Bundle 'VundleVim/Vundle.vim'
+	" Golang
+		Bundle 'fatih/vim-go'
 
-" standard vim
-Bundle 'itchyny/lightline.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'junegunn/seoul256.vim'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'tpope/vim-markdown'
-Bundle 'Yggdroot/indentLine'
+	" Web-dev
+		Bundle 'alvan/vim-closetag'
+		Bundle 'mattn/emmet-vim'
+	call vundle#end()            
+	syntax enable                
+	filetype plugin indent on    
 
-" lint engine
-Bundle 'w0rp/ale'
 
-" web-dev
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-surround'
-Bundle 'alvan/vim-closetag'
+" General vim settings
+	set hidden 
+	set autoread 
+	set laststatus=2
+	set iskeyword+=-
+	set backspace=indent,eol,start
+	set virtualedit+=block
+	set splitbelow
+	set splitright
+	set pastetoggle=<leader>m
+	set showmode
+	set cc=80
+	setlocal indentkeys+=0
 
-" html
-Bundle 'gregsexton/MatchTag'
-Bundle 'othree/html5.vim'
-Bundle 'mattn/emmet-vim'
+" Numberline
+	set number
+	set showcmd
 
-" express - view engines
-Bundle 'digitaltoad/vim-pug'
+" Tabs
+	set shiftwidth=2
+	set tabstop=2
+	set list lcs=tab:\▏\ 
 
-" css
-Bundle 'hail2u/vim-css3-syntax'
+" Speed
+	set nobackup 
+	set nowritebackup 
+	set noswapfile 
+	set ttyfast
+	set lazyredraw
 
-" scss
-Bundle 'cakebaker/scss-syntax.vim'
+" Search settings
+	set ignorecase 
+	set smartcase 
+	set incsearch
+	set showmatch
+	set hlsearch
+	set gdefault
 
-" js
-Bundle 'posva/vim-vue'
-Bundle 'pangloss/vim-javascript'
+" Colorscheme
+	let g:seoul256_background = 235
+	colo seoul256
 
-" json
-Bundle 'elzr/vim-json'
 
-" tmux 
-Bundle 'christoomey/vim-tmux-navigator'
+" Mappings
+	let mapleader = ","
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+	" Search
+		nnoremap / /\v
+		vnoremap / /\v
 
-let NERDTreeShowHidden=1
+	" Netrw toggle
+		map <leader>\ :Lexplore<CR> 
 
-" json settings
-let g:vim_json_syntax_conceal = 0
+	" Copy 
+		map <leader>y :%y+<CR>
 
-autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
-autocmd BufEnter *.vue :syntax sync fromstart
+	" Spellcheck
+		map <leader>t :set spell!<CR>
 
-set ttyfast
-set lazyredraw
+	" Linter
+		map <leader>q :ALEToggle<CR>
 
-syntax enable
+	" Colorcolumn
+		nnoremap <leader>w :let &cc = &cc == '' ? '81' : ''<CR>
 
-set number
-set showcmd
-set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+	" Create V-split and switch
+		noremap <leader>v <C-w>v
 
-" tab settings
-set smarttab 
-set shiftround 
+	" Vim-like split navigation
+		nnoremap <C-h> <C-w>h
+		nnoremap <C-j> <C-w>j
+		nnoremap <C-k> <C-w>k
+		nnoremap <C-l> <C-w>l
 
-set autoindent 
-set smartindent 
-set laststatus=2
-set iskeyword+=-
-set backspace=indent,eol,start
+	" Clear highlighting
+		noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 
-set nobackup 
-set nowritebackup 
-set noswapfile 
+	" Switch to last buffer
+		nnoremap <leader><leader> <c-^>
 
-set hidden 
-set autoread 
+	" Intuitive line movement
+		noremap j gj
+		noremap k gk
 
-" search settings
-set ignorecase 
-set smartcase 
-set incsearch
-set showmatch
-set hlsearch
-set gdefault
+	" Paste
+		nnoremap <leader>m :set invpaste paste?<CR>
 
-set virtualedit+=block
+" Variables
+	let g:lightline = {'colorscheme': 'seoul256'}
 
-set splitbelow
-set splitright
+	let g:ale_lint_delay = 100
+	let g:ale_sign_column_always = 1
 
-set pastetoggle=<leader>m
-set showmode
+	let g:vue_disable_pre_processors = 1
 
-let g:seoul256_background = 235
-colo seoul256
+	let g:AutoPairsMultilineClose = 0
 
-nnoremap / /\v
-vnoremap / /\v
+	let g:markdown_syntax_conceal = 0
+	let g:vim_json_syntax_conceal = 0
 
-let mapleader = ","
+	let g:netrw_liststyle = 3
+	let g:netrw_banner = 0
+	let g:netrw_browse_split = 4
+	let g:netrw_altv = 1
+	let g:netrw_winsize = 25
 
-map <leader>\ :NERDTreeToggle<CR>
+	let g:closetag_filenames = '*.html,*.xhtml,*.phtml, *.vue'
 
-map <leader>y :%y+<CR>
+	let g:go_fmt_fail_silently = 1
 
-" toggle linenumbers
-map <leader>n :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
+" Syntax highlighting
+	hi link typescriptEndColons Special
+	hi link typescriptReserved Include
+	hi link goDeclaration Identifier
+	hi link goDeclType Identifier
+	hi link goBuiltins Function
 
-" spellcheck
-map <leader>t :set spell!<CR>
-
-" toggle ale linter
-map <leader>q :ALEToggle<cr>
-
-" delete resulting tag side-effect
-imap <leader>z <ESC>ldf>a
-
-" set cc + toggle colorcolumn
-set cc=80
-nnoremap <leader>w :let &cc = &cc == '' ? '81' : ''<CR>
-
-" create new vsplit, and switch to it.
-noremap <leader>v <C-w>v
-
-" for easy split nav
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" clear match highlighting
-noremap <leader><space> :noh<cr>:call clearmatches()<cr>:IndentLinesToggle<cr>:IndentLinesToggle<CR>
-
-" last buffer switch
-nnoremap <leader><leader> <c-^>
-
-noremap j gj
-noremap k gk
-
-" paste settings
-nnoremap <leader>m :set invpaste paste?<CR>
-
-let g:lightline = {
-      \ 'colorscheme': 'seoul256',
-      \ }
-
-let g:ale_lint_delay = 100
-let g:indentLine_color_term = 239
-let g:indentLine_char = '▏'
-let g:vue_disable_pre_processors=1
-let g:AutoPairsMultilineClose = 0
+" Vue fixes
+	autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+	autocmd BufEnter *.vue :syntax sync fromstart
