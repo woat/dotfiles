@@ -17,6 +17,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias bs='browser-sync start --server  --files="**/*"'
 alias gome='cd ~/go/src/github.com/woat'
+alias repo='cd ~/Repo'
 alias gogh='cd ~/go/src/github.com/'
 alias vimrc='vim ~/.vimrc'
 alias gsquash='git reset --soft HEAD~2 && git commit -m'
