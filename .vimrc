@@ -11,6 +11,8 @@
 		Bundle 'suan/vim-instant-markdown'
 		Bundle 'tpope/vim-commentary'
 		Bundle 'tpope/vim-surround'
+		Bundle 'scrooloose/nerdtree'
+		Bundle 'jistr/vim-nerdtree-tabs'
 		Bundle 'tpope/vim-markdown'
 		Bundle 'christoomey/vim-tmux-navigator'
 		Bundle 'w0rp/ale'
@@ -28,7 +30,6 @@
 	syntax enable                
 	filetype plugin indent on    
 
-
 " General vim settings
 	set hidden 
 	set autoread 
@@ -38,7 +39,6 @@
 	set virtualedit+=block
 	set splitbelow
 	set splitright
-	set pastetoggle=<leader>m
 	set showmode
 	set cc=80
 	setlocal indentkeys+=0
@@ -71,7 +71,6 @@
 	let g:seoul256_background = 235
 	colo seoul256
 
-
 " Mappings
 	let mapleader = ","
 
@@ -80,9 +79,9 @@
 		vnoremap / /\v
 
 	" Netrw toggle
-		map <leader>\ :Lexplore<CR> 
+		map <leader>\ :NERDTreeToggle<CR> 
 
-	" Copy 
+	" Copy to (real) clipboard
 		map <leader>y :%y+<CR>
 
 	" Spellcheck
@@ -91,11 +90,11 @@
 	" Linter
 		map <leader>q :ALEToggle<CR>
 
-	" Colorcolumn
-		nnoremap <leader>w :let &cc = &cc == '' ? '81' : ''<CR>
-
 	" Create V-split and switch
 		noremap <leader>v <C-w>v
+
+	" Colorcolumn
+		nnoremap <leader>w :let &cc = &cc == '' ? '81' : ''<CR>
 
 	" Vim-like split navigation
 		nnoremap <C-h> <C-w>h
@@ -114,7 +113,7 @@
 		noremap k gk
 
 	" Paste
-		nnoremap <leader>m :set invpaste paste?<CR>
+		set pastetoggle=<leader>m
 
 " Variables
 	let g:lightline = {'colorscheme': 'seoul256'}
@@ -129,13 +128,7 @@
 	let g:markdown_syntax_conceal = 0
 	let g:vim_json_syntax_conceal = 0
 
-	let g:netrw_liststyle = 3
-	let g:netrw_banner = 0
-	let g:netrw_browse_split = 4
-	let g:netrw_altv = 1
-	let g:netrw_winsize = 25
-
-	let g:closetag_filenames = '*.html,*.xhtml,*.phtml, *.vue'
+	let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue,*.js'
 
 	let g:go_fmt_fail_silently = 1
 
