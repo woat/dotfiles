@@ -7,6 +7,7 @@
 	" General
 		Bundle 'itchyny/lightline.vim'
 		Bundle 'jiangmiao/auto-pairs'
+		Bundle 'MaxMEllon/vim-jsx-pretty'
 		Bundle 'sheerun/vim-polyglot'
 		Bundle 'suan/vim-instant-markdown'
 		Bundle 'tpope/vim-commentary'
@@ -72,14 +73,14 @@
 	colo seoul256
 
 " Mappings
-	let mapleader = ","
+	let mapleader = "\\"
 
 	" Search
 		nnoremap / /\v
 		vnoremap / /\v
 
-	" Netrw toggle
-		map <leader>\ :NERDTreeToggle<CR> 
+	" NerdTree toggle
+		map <leader>] :NERDTreeToggle<CR> 
 
 	" Copy to (real) clipboard
 		map <leader>y :%y+<CR>
@@ -122,6 +123,8 @@
 	let g:ale_sign_column_always = 1
 
 	let g:vue_disable_pre_processors = 1
+
+	let g:polyglot_disabled = ['jsx']
 
 	let g:AutoPairsMultilineClose = 0
 
