@@ -1,0 +1,34 @@
+-- bootable usb from iso --
+sudo fdisk -l 
+sudo dd if=name-of-iso.iso of=/dev/XXX status="progress"
+
+-- battery --
+sudo apt-get install tlp tlp-rdw acpi-call-dkms tp-smapi-dkms acpi-call-dkms
+sudo vim /etc/tlp.conf
+WIFI_PWR_ON_BAT=off
+
+-- albert -- 
+curl https://build.opensuse.org/projects/home:manuelschneid3r/public_key | sudo apt-key add -
+echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
+sudo wget -nv https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_20.04/Release.key -O "/etc/apt/trusted.gpg.d/home:manuelschneid3r.asc"
+sudo apt update
+sudo apt install albert
+
+-- boot splash --
+sudo vi /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT=""
+GRUB_GFXMODE=640x480
+update-grub
+
+-- tty font --
+sudo dpkg-reconfigure console-setup
+
+-- vim --
+sudo apt install vim-gtk3
+
+-- ranger --
+sudo apt install ranger
+
+-- caps -> ctrl --
+sudo vi /etc/default/keyboard
+XKBOPTIONS="caps:ctrl_modifier"
